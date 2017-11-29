@@ -1,0 +1,23 @@
+# docker-compose.yml
+---
+version: '2'  
+services:  
+  letsencrypt:
+    image: linuxserver/letsencrypt
+    container_name: letsencrypt
+    ports:
+      - 443:443
+    volumes:
+      - /opt/appdata/letsencrypt/config:/config
+    restart:
+      always
+    depends_on:
+      - grafana
+      - libresonic
+    environment:
+      - PUID=1050
+      - PGID=1050
+      - EMAIL=todd@itoddis.com
+      - URL=itoddis.com
+      - SUBDOMAINS=ssh,transmission
+      - TZ=America/New_York
