@@ -11,9 +11,9 @@ services:
       - /opt/appdata/letsencrypt/config:/config
     restart:
       always
-    depends_on:
-      - grafana
-      - libresonic
+    # depends_on:
+    #  - grafana
+    #  - libresonic
     environment:
       - PUID=1050
       - PGID=1050
